@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background: #071029;
+  color: #e8f1ff;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+.legacy-page-root {
+  min-height: calc(100vh - 70px);
+  width: 100%;
+  box-sizing: border-box;
+  padding-top: 12px;
+}
+
+/* Ensure injected legacy layout doesn't keep sidebar offsets */
+.legacy-page-root .app-container,
+.legacy-page-root .main-content,
+.legacy-page-root .page-content {
+  width: 100% !important;
+  margin-left: 0 !important;
+  padding: 0 !important;
+}
+
+/* When topbar-only layout is used ensure root fits under topbar */
+.topbar-only .legacy-page-root {
+  padding-top: 80px; /* leave space for sticky topbar */
+}
+
+/* Force injected legacy content into a full-height column layout so main content aligns to bottom correctly */
+.legacy-page-root > div {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 70px);
+  width: 100%;
+}
+
+/* Ensure app-container and page content inside injected markup expand to fill available space */
+.legacy-page-root .app-container { display: flex !important; flex-direction: column !important; min-height: inherit !important; width: 100% !important; }
+.legacy-page-root .main-content { flex: 1 1 auto !important; width: 100% !important; margin-left: 0 !important; }
+.legacy-page-root .page-content { flex: 1 1 auto !important; display: flex !important; flex-direction: column !important; justify-content: flex-start !important; }
+
+/* Route/map panels that set 100vh can be constrained within the legacy wrapper */
+.legacy-page-root [style*="height: 100vh"] { height: auto !important; min-height: 0 !important; }
+.legacy-page-root [style*="height: calc(100vh"] { height: auto !important; min-height: 0 !important; }
