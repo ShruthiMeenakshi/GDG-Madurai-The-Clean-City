@@ -1,0 +1,27 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Env files
+.env
+.env.local
+
+# Build
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Service account keys and secrets
+serviceAccountKey.json
+backend/serviceAccountKey.json
+
+# Logs
+logs/
+*.log
+
+# Misc
+.vscode/
